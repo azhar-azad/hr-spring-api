@@ -1,11 +1,20 @@
 package com.azad.hrspringapi.io.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Country {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String countryName;
 
-    // mapping with Region
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
     // mapping with Location
 
@@ -26,6 +35,14 @@ public class Country {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     @Override
