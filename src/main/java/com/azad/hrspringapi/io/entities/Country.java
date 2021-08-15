@@ -12,9 +12,9 @@ public class Country {
     @Column(nullable = false, unique = true)
     private String countryName;
 
-    @ManyToOne
-    @JoinColumn(name = "region_id")
-    private Region region;
+//    @ManyToOne
+//    @JoinColumn(name = "region_id")
+//    private Region region;
 
     // mapping with Location
 
@@ -37,13 +37,13 @@ public class Country {
         this.countryName = countryName;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
+//    public Region getRegion() {
+//        return region;
+//    }
+//
+//    public void setRegion(Region region) {
+//        this.region = region;
+//    }
 
     @Override
     public String toString() {

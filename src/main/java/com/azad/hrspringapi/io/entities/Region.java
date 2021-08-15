@@ -1,7 +1,6 @@
 package com.azad.hrspringapi.io.entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -14,12 +13,12 @@ public class Region {
     @Column(nullable = false, unique = true)
     private String regionName;
 
-    @OneToMany(
-            mappedBy = "region",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    private Set<Country> countries;
+//    @OneToMany(
+//            mappedBy = "region",
+//            cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY
+//    )
+//    private Set<Country> countries;
 
     public Region() {
     }
@@ -40,26 +39,26 @@ public class Region {
         this.regionName = regionName;
     }
 
-    public Set<Country> getCountries() {
-        return countries;
-    }
+//    public Set<Country> getCountries() {
+//        return countries;
+//    }
 
-    public void addCountry(Country country) {
-        if (country != null) {
-            if (this.countries == null) {
-                this.countries = new HashSet<>();
-            }
-            country.setRegion(this);
-            this.countries.add(country);
-        }
-    }
+//    public void addCountry(Country country) {
+//        if (country != null) {
+//            if (this.countries == null) {
+//                this.countries = new HashSet<>();
+//            }
+//            country.setRegion(this);
+//            this.countries.add(country);
+//        }
+//    }
 
-    public void addCountries(Set<Country> countries) {
-        if (countries.size() != 0) {
-            countries.forEach(country -> country.setRegion(this));
-            this.countries = countries;
-        }
-    }
+//    public void addCountries(Set<Country> countries) {
+//        if (countries.size() != 0) {
+//            countries.forEach(country -> country.setRegion(this));
+//            this.countries = countries;
+//        }
+//    }
 
     @Override
     public String toString() {

@@ -8,11 +8,6 @@ public class RegionDto {
     public RegionDto() {
     }
 
-    public RegionDto(Long id, String regionName) {
-        this.id = id;
-        this.regionName = regionName;
-    }
-
     public Long getId() {
         return id;
     }
