@@ -2,7 +2,6 @@ package com.azad.hrspringapi.ui.controllers;
 
 import com.azad.hrspringapi.io.entities.Country;
 import com.azad.hrspringapi.service.CountryService;
-import com.azad.hrspringapi.shared.dto.CountryDto;
 import com.azad.hrspringapi.ui.models.request.CountryDetailRequestModel;
 import com.azad.hrspringapi.ui.models.response.CountryRestResponse;
 import com.azad.hrspringapi.ui.models.response.OperationStatusModel;

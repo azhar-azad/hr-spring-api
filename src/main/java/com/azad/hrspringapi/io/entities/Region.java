@@ -44,22 +44,22 @@ public class Region {
         return countries;
     }
 
-    public void addCountry(Country country) {
-        if (country != null) {
-            if (this.countries == null) {
-                this.countries = new HashSet<>();
-            }
-            country.setRegion(this);
-            this.countries.add(country);
-        }
-    }
-
-    public void addCountries(Set<Country> countries) {
-        if (countries.size() != 0) {
-            countries.forEach(country -> country.setRegion(this));
-            this.countries = countries;
-        }
-    }
+//    public void addCountry(Country country) {
+//        if (country != null) {
+//            if (this.countries == null) {
+//                this.countries = new HashSet<>();
+//            }
+//            country.setRegion(this);
+//            this.countries.add(country);
+//        }
+//    }
+//
+//    public void addCountries(Set<Country> countries) {
+//        if (countries.size() != 0) {
+//            countries.forEach(country -> country.setRegion(this));
+//            this.countries = countries;
+//        }
+//    }
 
     @Override
     public String toString() {

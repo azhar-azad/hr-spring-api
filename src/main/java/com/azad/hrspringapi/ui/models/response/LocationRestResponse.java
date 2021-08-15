@@ -1,30 +1,19 @@
-package com.azad.hrspringapi.io.entities;
+package com.azad.hrspringapi.ui.models.response;
 
-import javax.persistence.*;
+public class LocationRestResponse {
 
-@Entity
-public class Location {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String streetAddress;
     private String postalCode;
-    @Column(nullable = false)
     private String city;
     private String stateProvince;
+    private CountryRestResponse country;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
-
-    // mapping with Department
-
-    public Location() {
+    public LocationRestResponse() {
     }
 
-    public Location(String streetAddress, String postalCode, String city, String stateProvince) {
+    public LocationRestResponse(Long id, String streetAddress, String postalCode, String city, String stateProvince) {
+        this.id = id;
         this.streetAddress = streetAddress;
         this.postalCode = postalCode;
         this.city = city;
@@ -33,6 +22,10 @@ public class Location {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreetAddress() {
@@ -67,22 +60,11 @@ public class Location {
         this.stateProvince = stateProvince;
     }
 
-    public Country getCountry() {
+    public CountryRestResponse getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(CountryRestResponse country) {
         this.country = country;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", city='" + city + '\'' +
-                ", stateProvince='" + stateProvince + '\'' +
-                '}';
     }
 }

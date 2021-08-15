@@ -7,9 +7,7 @@ import com.azad.hrspringapi.io.repositories.CountryRepository;
 import com.azad.hrspringapi.service.CountryService;
 import com.azad.hrspringapi.service.RegionService;
 import com.azad.hrspringapi.ui.models.response.ErrorMessages;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -21,6 +19,7 @@ import java.util.List;
 public class CountryServiceImpl implements CountryService {
 
     private CountryRepository countryRepository;
+
     private RegionService regionService;
 
     @Autowired

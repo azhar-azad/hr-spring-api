@@ -1,6 +1,9 @@
 package com.azad.hrspringapi.io.entities;
 
+import org.apache.catalina.LifecycleState;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Country {
@@ -16,7 +19,12 @@ public class Country {
     @JoinColumn(name = "region_id")
     private Region region;
 
-    // mapping with Location
+    @OneToMany(
+            mappedBy = "country",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Location> locations;
 
     public Country() {
     }
@@ -43,6 +51,14 @@ public class Country {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     @Override
