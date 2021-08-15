@@ -1,31 +1,17 @@
-package com.azad.hrspringapi.io.entities;
+package com.azad.hrspringapi.ui.models.response;
 
-import javax.persistence.*;
+public class JobRestResponse {
 
-@Entity
-public class Job {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, unique = true)
     private String jobTitle;
-
-    @Column(nullable = false)
     private double minSalary;
-
-    @Column(nullable = false)
     private double maxSalary;
 
-    // mapping with Employee
-
-    // mapping with JobHistory
-
-    public Job() {
+    public JobRestResponse() {
     }
 
-    public Job(String jobTitle, double minSalary, double maxSalary) {
+    public JobRestResponse(Long id, String jobTitle, double minSalary, double maxSalary) {
+        this.id = id;
         this.jobTitle = jobTitle;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
@@ -33,6 +19,10 @@ public class Job {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getJobTitle() {
@@ -57,15 +47,5 @@ public class Job {
 
     public void setMaxSalary(double maxSalary) {
         this.maxSalary = maxSalary;
-    }
-
-    @Override
-    public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", minSalary=" + minSalary +
-                ", maxSalary=" + maxSalary +
-                '}';
     }
 }
