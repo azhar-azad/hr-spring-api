@@ -1,18 +1,18 @@
 package com.azad.hrspringapi.service;
 
-import com.azad.hrspringapi.shared.dto.RegionDto;
+import com.azad.hrspringapi.io.entities.Region;
 
 import java.util.List;
 
 public interface RegionService {
 
-    RegionDto createRegion(RegionDto regionDto);
+    Region createRegion(Region region);
 
-    RegionDto getRegionById(Long id);
+    Region getRegionById(Long id);
 
-    List<RegionDto> getRegions(int page, int limit);
+    List<Region> getRegions(int page, int limit);
 
-    RegionDto updateRegion(Long id, RegionDto regionDto);
+    Region updateRegion(Long id, Region region);
 
     void deleteRegion(Long id);
 }

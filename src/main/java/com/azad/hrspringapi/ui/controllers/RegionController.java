@@ -1,7 +1,7 @@
 package com.azad.hrspringapi.ui.controllers;
 
+import com.azad.hrspringapi.io.entities.Region;
 import com.azad.hrspringapi.service.RegionService;
-import com.azad.hrspringapi.shared.dto.RegionDto;
 import com.azad.hrspringapi.ui.models.request.RegionDetailRequestModel;
 import com.azad.hrspringapi.ui.models.response.OperationStatusModel;
 import com.azad.hrspringapi.ui.models.response.RegionRestResponse;
@@ -34,9 +34,9 @@ public class RegionController {
 
     @PostMapping
     public ResponseEntity<RegionRestResponse> createRegion(@RequestBody RegionDetailRequestModel regionDetails) {
-        RegionDto regionDto = modelMapper.map(regionDetails, RegionDto.class);
+        Region region = modelMapper.map(regionDetails, Region.class);
 
-        RegionDto createdRegion = regionService.createRegion(regionDto);
+        Region createdRegion = regionService.createRegion(region);
 
         RegionRestResponse responseBody = modelMapper.map(createdRegion, RegionRestResponse.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseBody);
@@ -47,32 +47,30 @@ public class RegionController {
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "limit", defaultValue = "25") int limit) {
 
-        List<RegionDto> regionDtos = regionService.getRegions(page, limit);
+        List<Region> regions = regionService.getRegions(page, limit);
 
         List<RegionRestResponse> regionResponseList = new ArrayList<>();
-        regionDtos.forEach(regionDto -> regionResponseList.add(modelMapper.map(regionDto, RegionRestResponse.class)));
+        regions.forEach(region -> regionResponseList.add(modelMapper.map(region, RegionRestResponse.class)));
 
         return ResponseEntity.status(HttpStatus.OK).body(regionResponseList);
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<RegionRestResponse> getRegion(@PathVariable Long id) {
-        RegionDto regionDto = regionService.getRegionById(id);
+        Region region = regionService.getRegionById(id);
 
-        RegionRestResponse responseBody = modelMapper.map(regionDto, RegionRestResponse.class);
-
+        RegionRestResponse responseBody = modelMapper.map(region, RegionRestResponse.class);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 
     @PutMapping(path = "/{id}")
     public ResponseEntity<RegionRestResponse> updateRegion(@PathVariable Long id, @RequestBody RegionDetailRequestModel regionDetails) {
-        RegionDto regionDto = modelMapper.map(regionDetails, RegionDto.class);
+        Region region = modelMapper.map(regionDetails, Region.class);
 
-        RegionDto updatedRegion = regionService.updateRegion(id, regionDto);
+        Region updatedRegion = regionService.updateRegion(id, region);
 
-        RegionRestResponse serviceResponse = modelMapper.map(updatedRegion, RegionRestResponse.class);
-
-        return ResponseEntity.status(HttpStatus.OK).body(serviceResponse);
+        RegionRestResponse responseBody = modelMapper.map(updatedRegion, RegionRestResponse.class);
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 
     @DeleteMapping(path = "/{id}")
