@@ -1,6 +1,7 @@
 package com.azad.hrspringapi.io.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Location {
@@ -19,7 +20,12 @@ public class Location {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    // mapping with Department
+    @OneToMany(
+            mappedBy = "location",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private List<Department> departments;
 
     public Location() {
     }
@@ -73,6 +79,14 @@ public class Location {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 
     @Override

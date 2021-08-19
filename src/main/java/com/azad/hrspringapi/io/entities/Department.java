@@ -1,12 +1,22 @@
 package com.azad.hrspringapi.io.entities;
 
+import javax.persistence.*;
+
+@Entity
 public class Department {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String departmentName;
+
     private String managerName;
 
-    // mapping with Location
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     // mapping with Employee
 
@@ -38,6 +48,14 @@ public class Department {
 
     public void setManagerName(String managerName) {
         this.managerName = managerName;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override
