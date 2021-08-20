@@ -1,57 +1,40 @@
-package com.azad.hrspringapi.io.entities;
+package com.azad.hrspringapi.ui.models.response;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-public class Employee {
+public class EmployeeRestResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String firstName;
-
-    @Column(nullable = false)
     private String lastName;
-
-    @Column(nullable = false, unique = true)
     private String email;
-
-    @Column(nullable = false)
     private String phoneNumber;
-
-    @Column(nullable = false)
     private Date hireDate;
-
-    @Column(nullable = false)
     private double salary;
+    private DepartmentRestResponse department;
+    private JobRestResponse job;
 
-    @ManyToOne
-    @JoinColumn(name = "job_id")
-    private Job job;
-
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
-
-    // mapping with JobHistory
-
-    public Employee() {
+    public EmployeeRestResponse() {
     }
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, Date hireDate, double salary) {
+    public EmployeeRestResponse(Long id, String firstName, String lastName, String email, String phoneNumber, Date hireDate, double salary, DepartmentRestResponse department, JobRestResponse job) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.hireDate = hireDate;
         this.salary = salary;
+        this.department = department;
+        this.job = job;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -102,32 +85,19 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Department getDepartment() {
+    public DepartmentRestResponse getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(DepartmentRestResponse department) {
         this.department = department;
     }
 
-    public Job getJob() {
+    public JobRestResponse getJob() {
         return job;
     }
 
-    public void setJob(Job job) {
+    public void setJob(JobRestResponse job) {
         this.job = job;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", hireDate=" + hireDate +
-                ", salary=" + salary +
-                '}';
     }
 }

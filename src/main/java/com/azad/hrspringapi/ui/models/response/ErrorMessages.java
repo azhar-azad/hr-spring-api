@@ -4,6 +4,7 @@ public enum ErrorMessages {
 
     RESOURCE_NOT_FOUND("Resource not found."),
     RESOURCE_NOT_FOUND_WITH_ID("Resource with provided ID is not found."),
+    RESOURCE_NOT_AVAILABLE("No resource available."),
     MISSING_REQUIRED_FIELDS("Missing required fields. Please check documentation for required fields."),
     RECORD_ALREADY_EXISTS("Record already exists."),
     INTERNAL_SERVER_ERROR("Internal server error."),

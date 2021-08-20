@@ -1,6 +1,7 @@
 package com.azad.hrspringapi.io.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Job {
@@ -18,7 +19,12 @@ public class Job {
     @Column(nullable = false)
     private double maxSalary;
 
-    // mapping with Employee
+    @OneToMany(
+            mappedBy = "job",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    private List<Employee> employees;
 
     // mapping with JobHistory
 
@@ -57,6 +63,14 @@ public class Job {
 
     public void setMaxSalary(double maxSalary) {
         this.maxSalary = maxSalary;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override
